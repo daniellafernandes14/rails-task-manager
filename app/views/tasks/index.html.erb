@@ -1,0 +1,19 @@
+<h1 class="parent-font">Tasks</h1>
+
+<ul id="list">
+<% @tasks.each do |task| %>
+  <li>
+    <% if task.completed %>
+      <%= fa_icon "check-square" %>
+    <% else %>
+      <%= fa_icon "square" %>
+    <% end %>
+    <%= link_to task.title, task_path(task) %>
+    <%= link_to "Delete", task_path(task), :method => :delete, data:{confirm: "Are you sure you want to delete?"} %>
+  </li>
+<% end %>
+</ul>
+
+<div class="btn btn-secondary">
+  <%= link_to 'Create Task', tasks_new_path %>
+</div>
